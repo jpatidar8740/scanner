@@ -59,6 +59,18 @@ class Manager {
         }
     }
 
+    resetGrid() {
+        this.grid = new Array(this.m);
+        for (var i = 0; i < this.m; i++) {
+            this.grid[i] = new Array(this.n);
+            for (var j = 0; j < this.n; j++) {
+                this.grid[i][j] = STATE.INITIAL;
+            }
+        }
+        this.cell = { x: parseInt(this.m / 2), y: parseInt(this.n / 2) };
+        this.startProcessing(this.cell["x"], this.cell["y"]);
+    }
+
     startProcessing(x, y) {
         if (!this.validateCoordinates(x, y)) {
             console.log("Invalid coordinates");

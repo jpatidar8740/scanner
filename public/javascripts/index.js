@@ -3,7 +3,6 @@ var socket = io();
 getTable();
 
 window.addEventListener("keydown", (e) => {
-    console.log(e);
     if (e.code == "ArrowLeft") {
         sendMoves("LEFT");
     } else if (e.code == "ArrowUp") {
@@ -21,5 +20,11 @@ socket.on("tableUpdated", (data) => {
         alert(data.msg);
     } else {
         getTable();
+    }
+});
+
+document.getElementById("reset-btn").addEventListener("click", (event) => {
+    if (confirm("You sure you want to reset grid?")) {
+        resetGrid();
     }
 });

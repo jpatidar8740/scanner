@@ -19,7 +19,6 @@ grid.render(document.getElementById("container"));
 
 function updateGrid(table, activeCell) {
 
-    console.log(activeCell);
     var m = table.length;
     var n = table[0].length;
     var data = new Array(m);
@@ -92,5 +91,22 @@ function sendMoves(key) {
         .catch((e) => {
             console.log(e);
             alert("Some error ocured while updating camera position, please retry.");
+        });
+}
+
+function resetGrid() {
+    console.log("Resetting grid.");
+    var url = "/resetGrid";
+    axios({
+        method: 'post',
+        url: url,
+    })
+        .then(function (res) {
+            console.log(res.data.status);
+            alert("Grid resetted successfully.");
+        })
+        .catch((e) => {
+            console.log(e);
+            alert("Some error ocured while resetting grid, please retry.");
         });
 }

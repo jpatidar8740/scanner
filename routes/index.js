@@ -21,4 +21,9 @@ router.get('/getStatus', function (req, res, next) {
   res.send({ table: JSON.stringify(manager.getTable()), activeCell: manager.getCell() });
 });
 
+router.post("/resetGrid", function (req, res, next) {
+  manager.resetGrid();
+  res.send({ msg: "Grid reset." });
+});
+
 module.exports = router;
