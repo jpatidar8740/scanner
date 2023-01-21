@@ -3,6 +3,38 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#container {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
+
+td.gridjs-td {
+  padding: 0px;
+  height: 2px;
+  width: 2px;
+}
+
+.active {
+  border: 2px solid goldenrod;
+}
+
+.captured {
+  content: "captured";
+}
+
+.focused {
+  content: "focused";
+}
+
+.capturing {
+  content: "capturing";
+}
+
+.focusing {
+  content: "focusing";
+}
+
+.ignored {
+  content: "ignored";
+}
+

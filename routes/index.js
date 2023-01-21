@@ -1,21 +1,24 @@
 var express = require('express');
+var path = require('path');
 const { manager } = require('../utils/Manager');
 var router = express.Router();
 
+var viewsPath = path.join(__dirname, '../views');
 
 /* GET home page. */
-router.post('/pushKey', function (req, res, next) {
-  // Extract co-ordinates.
-  console.log(req.body);
-  var x = req.body.x;
-  var y = req.body.y;
+router.get("/", function (req, res, next) {
+  res.sendFile(viewsPath + "/index.html");
+});
 
-  var grid = manager.startProcessing(x, y);
-  res.send({ status: "Received", grid: grid });
+
+router.post('/pushKey', function (req, res, next) {
+  manager.moveCell(req.body.move);
+  console.log(manager.getTable());
+  res.send({ status: "Received" });
 });
 
 router.get('/getStatus', function (req, res, next) {
-  res.send({ table: JSON.stringify(getTable()) });
+  res.send({ table: JSON.stringify(manager.getTable()), activeCell: manager.getCell() });
 });
 
 module.exports = router;
